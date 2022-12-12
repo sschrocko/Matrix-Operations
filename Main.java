@@ -4,7 +4,11 @@ import java.io.FileNotFoundException;
 class Main {
   public static void main(String[] args) {
     boolean doAgain = true;
+    int userInput;
     Scanner input = new Scanner(System.in);
+    CreateMatrix create = new CreateMatrix();
+    DisplayMatrix display = new DisplayMatrix();
+    MatrixOperations op = new MatrixOperations();
     while (doAgain) {
       System.out.println("MATRIX CALCULATOR\n\n");
       System.out.println("Menu:");
@@ -14,19 +18,15 @@ class Main {
       System.out.println("4. Multiply matrices");
       System.out.println("5. Quit");
       System.out.print("Enter 1 - 5: ");
-      int userInput = input.nextInt();
-      input.nextLine();
-
+      userInput = input.nextInt();
       switch (userInput) {
         case 1:
-          CreateMatrix create = new CreateMatrix();
           create.dimensions();
           create.inputElements();
           create.displayMatrix();
           create.saveMatrix();
           break;
         case 2:
-          DisplayMatrix display = new DisplayMatrix();
           try {
             display.displayAll();
           }
@@ -36,15 +36,30 @@ class Main {
           }
           break;
         case 3:
-          
+          try {
+            op.inputTwoMatrices();
+            op.doSum();
+          }
+          catch(FileNotFoundException error) {
+            System.out.print(display.getFileName() + " not found");
+            System.out.println(error);
+          }
           break;
         case 4:
+          try {
+            op.inputTwoMatrices();
+            op.doProduct();
+          }
+          catch(FileNotFoundException error) {
+            System.out.print(display.getFileName() + " not found");
+            System.out.println(error);
+          }
           break;
         case 5:
           doAgain = false;
           break;
         }
       }
-    input.close();
+      
     }
 }
