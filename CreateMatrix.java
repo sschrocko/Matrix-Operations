@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//import java.lang.StringBuilder;
 import java.io.*;
 
 class CreateMatrix {
@@ -14,7 +13,7 @@ class CreateMatrix {
   }
   
   Scanner input = new Scanner(System.in);
-  
+  //gets the user's desired dimensions for the matrix they are creating
   public void dimensions() {
     System.out.print("Enter the vertical size of the matrix: ");
     vertical = input.nextInt();
@@ -24,7 +23,7 @@ class CreateMatrix {
     input.nextLine();
     System.out.println("");
   }
-
+  //gets the individual elements of the matrix and assigns them to the matrix that is created
   public void inputElements() {
     int[][] mat = new int[vertical][horizontal];
     for (int y = 0; y < vertical; y++) {
@@ -38,7 +37,7 @@ class CreateMatrix {
     System.out.println("\n");
     matrix = mat;
   }
-  
+  //converts matrix to a string with or without dimensions or bars
   public String toString(int[][] matrix, boolean withDimensions, boolean withBars) {
     StringBuilder builder = new StringBuilder();
     if (withDimensions) {
@@ -63,7 +62,7 @@ class CreateMatrix {
     }
     return builder.toString();
   }
-
+  //creates a matrix file with the user's desired name, writes the matrix on to the file, and writes the name of the file into myMatrices.txt
   public void saveMatrix() {
     System.out.println("Save this matrix? (1 for yes, 2 for no)");
 

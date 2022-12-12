@@ -12,6 +12,7 @@ class MatrixOperations extends DisplayMatrix {
   int vert;
   int horiz;
   int[][] resultMat;
+  //gets the names of matrices from user and assigns the matrix to variables m1 and m2
   public void inputTwoMatrices() throws FileNotFoundException{
     Scanner matrixInput = new Scanner(System.in);
     System.out.print("Enter the name of the first matrix: ");
@@ -21,7 +22,7 @@ class MatrixOperations extends DisplayMatrix {
     m2Name = matrixInput.nextLine() + ".txt";
     m2 = readMatrix(m2Name);
   }
-
+  //prints the "matrices can not be added" or prints the addition process and result
   public void doSum() throws FileNotFoundException{
     if (m1.length != m2.length || m1[0].length != m2[0].length) {
       System.out.println("Matrices can not be added");
@@ -30,7 +31,7 @@ class MatrixOperations extends DisplayMatrix {
       System.out.println(displayOne(addMatrices(), false, false)); 
     }
   }
-  
+  //returns the resulting matrix of adding two matrices
   public int[][] addMatrices() {
     vert = m1.length;
     horiz = m1[0].length;
@@ -42,7 +43,7 @@ class MatrixOperations extends DisplayMatrix {
     }
     return resultMat;
   }
-
+  ////prints the "matrices can not be multiplied" or prints the multiplication process and result
   public void doProduct() throws FileNotFoundException{
     if (m1[0].length != m2.length) {
       System.out.println("Matrices can not be multiplied");
@@ -51,7 +52,7 @@ class MatrixOperations extends DisplayMatrix {
       System.out.println(displayOne(multiplyMatrices(), false, false)); 
     }
   }
-
+  ////returns the resulting matrix of multiplying two matrices
   public int[][] multiplyMatrices() {
     vert = m1.length;
     horiz = m2[0].length;

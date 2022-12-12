@@ -7,6 +7,7 @@ class DisplayMatrix {
     
   }
   String currentFile;
+  //displays all saved matrices
   public void displayAll() throws FileNotFoundException{
     File names = new File("myMatrices.txt");
     Scanner nameScanner = new Scanner(names);
@@ -18,7 +19,7 @@ class DisplayMatrix {
     nameScanner.close();
   }
   
-
+  //returns matrix associated with the fileName parameter
   public int[][] readMatrix(String fileName) throws FileNotFoundException{
     File matrixFile = new File(fileName);
     Scanner fileInput = new Scanner(matrixFile);
@@ -36,11 +37,11 @@ class DisplayMatrix {
     fileInput.close();
     return currentMat;
   }
-
+  //returns name of current file for FileNotFoundException error
   public String getFileName() {
     return currentFile;
   }
-  
+  //displays matrix in of matrix parameter with options for including name of file and separating lines
   public String displayOne(int[][] matrix, boolean withLine, boolean withName) throws FileNotFoundException{
     StringBuilder builder = new StringBuilder();
     if (withName) {
